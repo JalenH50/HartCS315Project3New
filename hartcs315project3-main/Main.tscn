@@ -1,0 +1,244 @@
+[gd_scene load_steps=18 format=3 uid="uid://c5nldj5q0ljn7"]
+
+[ext_resource type="Script" path="res://character_body_2d.gd" id="1_querq"]
+[ext_resource type="Script" path="res://enemy_spawner.gd" id="1_rdc7w"]
+[ext_resource type="Texture2D" uid="uid://dhksg2ud68drt" path="res://Assets/TopDownCharacter/Character/spritesheet.png" id="2_asqok"]
+[ext_resource type="Texture2D" uid="uid://bgy0yay5wpbob" path="res://healthbarProgress.png" id="3_x7gox"]
+[ext_resource type="PackedScene" uid="uid://dpahprj74vwg7" path="res://slime.tscn" id="4_j652f"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g3b0w"]
+radius = 10.0499
+
+[sub_resource type="Animation" id="Animation_jdwm3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_x8f4n"]
+resource_name = "idle"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_xboed"]
+resource_name = "walk_down"
+length = 1.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_2esy1"]
+resource_name = "walk_downLeft"
+length = 1.6
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_n3hqn"]
+resource_name = "walk_downRight"
+length = 1.6
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11]
+}
+
+[sub_resource type="Animation" id="Animation_xksdo"]
+resource_name = "walk_left"
+length = 1.6
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 15]
+}
+
+[sub_resource type="Animation" id="Animation_04pm0"]
+resource_name = "walk_right"
+length = 1.6
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [16, 17, 18, 19]
+}
+
+[sub_resource type="Animation" id="Animation_uv3gv"]
+resource_name = "walk_up"
+length = 1.6
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [72, 73, 74, 75]
+}
+
+[sub_resource type="Animation" id="Animation_gy0ia"]
+resource_name = "walk_upLeft"
+length = 1.6
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [76, 77, 78, 79]
+}
+
+[sub_resource type="Animation" id="Animation_71br1"]
+resource_name = "walk_upRight"
+length = 1.6
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [80, 81, 82, 83]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5140v"]
+_data = {
+"RESET": SubResource("Animation_jdwm3"),
+"idle": SubResource("Animation_x8f4n"),
+"walk_down": SubResource("Animation_xboed"),
+"walk_downLeft": SubResource("Animation_2esy1"),
+"walk_downRight": SubResource("Animation_n3hqn"),
+"walk_left": SubResource("Animation_xksdo"),
+"walk_right": SubResource("Animation_04pm0"),
+"walk_up": SubResource("Animation_uv3gv"),
+"walk_upLeft": SubResource("Animation_gy0ia"),
+"walk_upRight": SubResource("Animation_71br1")
+}
+
+[node name="Node2D" type="Node2D"]
+
+[node name="EnemySpawner" type="Node2D" parent="." node_paths=PackedStringArray("player", "spawn_timer")]
+script = ExtResource("1_rdc7w")
+slime_scene = ExtResource("4_j652f")
+num_slimes = 1
+spawn_radius = 220.0
+player = NodePath("../Player")
+spawn_timer = NodePath("EnemySpawnTimer")
+
+[node name="EnemySpawnTimer" type="Timer" parent="EnemySpawner"]
+
+[node name="Player" type="CharacterBody2D" parent="." node_paths=PackedStringArray("health_bar") groups=["Player"]]
+motion_mode = 1
+script = ExtResource("1_querq")
+health_bar = NodePath("PlayerHealth")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_g3b0w")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+texture_filter = 1
+texture = ExtResource("2_asqok")
+hframes = 84
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_5140v")
+}
+speed_scale = 1.25
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(3, 3)
+
+[node name="PlayerHealth" type="TextureProgressBar" parent="Player"]
+texture_filter = 1
+offset_left = -32.0
+offset_top = 9.0
+offset_right = 32.0
+offset_bottom = 19.0
+value = 100.0
+texture_progress = ExtResource("3_x7gox")
+
+[connection signal="timeout" from="EnemySpawner/EnemySpawnTimer" to="EnemySpawner" method="_on_enemy_spawn_timer_timeout"]

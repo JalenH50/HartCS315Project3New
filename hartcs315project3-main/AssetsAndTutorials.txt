@@ -1,0 +1,13 @@
+ASSETS
+
+https://gamekrazzy.itch.io/8-direction-top-down-character  //Player Model
+	https://codeshack.io/images-sprite-sheet-generator/   //Used to Localize all sprite into one sprite sheet (for player)
+	
+https://makertech.itch.io/additional-art-for-godot-4-tutorial  //HP Progress Bar
+	
+https://rvros.itch.io/pixel-art-animated-slime   //Slime Enemy with spriteSheets
+
+
+
+
+TUTORIALS
